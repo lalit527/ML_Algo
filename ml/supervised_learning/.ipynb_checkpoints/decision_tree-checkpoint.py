@@ -1,17 +1,5 @@
 import numpy as np
 
-def divide_on_feature(X, feature_i, threshold):
-    split_func = None
-    if isinstance(threshold, int) or isinstance(threshold, float):
-        split_func = lambda sample: sample[feature_i] >= threshold
-    else:
-        split_func = lambda sample: sample[feature_i] == threshold
-    
-    X_1 = np.array([sample for sample in X if split_func(sample)])
-    X_2 = np.array([sample for sample in X if not split_func(sample)])
-    
-    return np.array([X_1, X_2])
-
 class DecisionNode:
     def __init__(self, feature_i=None, threshold=None, value=None, left_branch=None, right_branch=None):
         self.feature_i = feature_i        # Index for feature that is tested
@@ -199,13 +187,3 @@ class XGBoostRegressionTree(DecisionTree):
         self._leaf_value_calculation = self._approximate_update
         super().fit(X, y)
         
-def calculate_entropy(y):
-    log2 = lambda x: math.log(x) / math.log(2)
-    unique_labels = np.unique(y)
-    entropy = 0
-    
-    for label in unique_labels:
-        count = len(y[y == label])
-        p = count / len(y)
-        entropy += -p * log2(p)
-    return entropy
