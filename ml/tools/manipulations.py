@@ -50,3 +50,10 @@ def polynomial_feature(X, degree):
     for i, index_combs in enumerate(combinations):
         X_new[:, i] = np.prod(X[:, index_combs], axis=1)
     return X_new
+
+def make_diagonal(x):
+    m = np.zeros((len(x), len(x)))
+    for i in range(len(m[0])):
+        m[i, i] = x[i]
+        
+    return m
