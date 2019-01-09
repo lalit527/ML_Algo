@@ -1,5 +1,14 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
 import numpy as np
 from itertools import combinations_with_replacement
+
+
+# In[2]:
 
 
 def divide_on_feature(X, feature_i, threshold):
@@ -13,6 +22,9 @@ def divide_on_feature(X, feature_i, threshold):
     X_2 = np.array([sample for sample in X if not split_func(sample)])
     
     return np.array([X_1, X_2])
+
+
+# In[3]:
 
 
 def get_random_subsets(X, y, n_subsets, replacements=True):
@@ -30,10 +42,18 @@ def get_random_subsets(X, y, n_subsets, replacements=True):
         subsets.append([X, y])
     return subsets
 
+
+# In[4]:
+
+
 def normalize(X, axis=-1, order=2):
     l2 = np.atleast_1d(np.linalg.norm(X, order, axis))
     l2[l2 == 0] = 1
     return X / np.expand_dims(l2, axis)
+
+
+# In[5]:
+
 
 def polynomial_feature(X, degree):
     n_samples, n_features = np.shape(X)
@@ -51,9 +71,26 @@ def polynomial_feature(X, degree):
         X_new[:, i] = np.prod(X[:, index_combs], axis=1)
     return X_new
 
+
+# In[6]:
+
+
 def make_diagonal(x):
     m = np.zeros((len(x), len(x)))
     for i in range(len(m[0])):
         m[i, i] = x[i]
         
     return m
+
+
+# In[7]:
+
+
+get_ipython().system('jupyter nbconvert --to script manipulations.ipynb')
+
+
+# In[ ]:
+
+
+
+

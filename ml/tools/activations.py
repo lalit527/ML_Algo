@@ -107,7 +107,7 @@ class SoftPlus:
         return 1 / (1 + np.exp(-x))
 
 
-# In[17]:
+# In[21]:
 
 
 get_ipython().system('jupyter nbconvert --to script activations.ipynb')

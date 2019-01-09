@@ -1,4 +1,14 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[2]:
+
+
 import numpy as np
+
+
+# In[3]:
+
 
 def calculate_entropy(y):
     log2 = lambda x: math.log(x) / math.log(2)
@@ -11,7 +21,24 @@ def calculate_entropy(y):
         entropy += -p * log2(p)
     return entropy
 
+
+# In[4]:
+
+
 def calculate_variance(X):
     mean = np.ones(np.shape(X)) * X.mean(0)
     n_samples = np.shape(X)[0]
     variance = (1 / n_samples) * np.diag((X - mean).T.dot(X - mean))
+
+
+# In[6]:
+
+
+get_ipython().system('jupyter nbconvert --to script operations.ipynb')
+
+
+# In[ ]:
+
+
+
+
