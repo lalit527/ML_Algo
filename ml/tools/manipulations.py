@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[9]:
 
 
 import numpy as np
+import pandas as pd
 from itertools import combinations_with_replacement
 
 
@@ -83,10 +84,46 @@ def make_diagonal(x):
     return m
 
 
-# In[8]:
+# In[23]:
+
+
+def poly_feature(X, degree):
+    poly_frame = pd.DataFrame()
+    poly_frame['power_1'] = X
+    for power in range(2, degree+1):
+        name = 'power_' + str(power)
+        poly_frame[name] = X ** power
+    return poly_frame
+
+
+# In[24]:
 
 
 get_ipython().system('jupyter nbconvert --to script manipulations.ipynb')
+
+
+# In[10]:
+
+
+poly_frame = pd.DataFrame()
+
+
+# In[11]:
+
+
+X = np.array([1,2,3,4,5])
+
+
+# In[12]:
+
+
+poly_frame['power_1'] = X
+
+
+# In[17]:
+
+
+X ** 3
 
 
 # In[ ]:
